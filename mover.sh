@@ -22,5 +22,5 @@ for logfile in $(find $FOLDER -maxdepth 1 -mtime $MAXDAYS -type f | grep -E '(.t
 
 	# Moves file to destinaiton
 	# TODO: change this to mv
-	cp -vf $logfile $DESTINAITON
+	echo $(cp -vf $logfile $DESTINAITON) >> log.txt
 done
