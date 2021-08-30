@@ -1,11 +1,26 @@
 #!/bin/bash
 
-MAXAGE=$(bc <<<'24*60*60') # seconds in 28 hours
+# Sets the max age 5 days\
+MAXDAYS=5
 
-# file age in seconds = current_time - file_modification_time.
-FILEAGE=$(($(date +%s) - $(stat -c '%Y' "$1")))
+FOLDER=$1
+DESTINAITON=$2
 
-# Tests if a file is older than the max age of 24 hours 
-if [ $FILEAGE -gt $MAXAGE ]; then
-	echo "older"
+if [[ -z "$MAXDAYS" ]]; then
+	echo "You must set the max days from the makefile..."
+	exit 1
 fi
+
+if [ "$#" -ne 2 ]; then 
+	echo "You must supply the required and valid inputs."
+	echo "Sample: ./mover <source-folder> <destination-folder>"
+	exit 1
+fi
+
+for logfile in $(find $FOLDER -maxdepth 1 -mtime $MAXDAYS -type f | grep -E '(.txt|.log)$'); do
+	ls -asl $logfile
+
+	# Moves file to destinaiton
+	# TODO: change this to mv
+	cp -vf $logfile $DESTINAITON
+done
