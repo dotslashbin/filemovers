@@ -13,7 +13,7 @@ fi
 
 if [ "$#" -ne 2 ]; then 
 	echo "You must supply the required and valid inputs."
-	echo "Sample: ./mover <source-folder> <destination-folder>"
+	echo "Sample: ./mover.sh <source-folder> <destination-folder>"
 	exit 1
 fi
 
