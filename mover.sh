@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Sets the max age 5 days\
-MAXDAYS=5
+MAXDAYS=21
 
 FOLDER=$1
 DESTINAITON=$2
@@ -22,5 +22,5 @@ for logfile in $(find $FOLDER -maxdepth 1 -mtime $MAXDAYS -type f | grep -E '(.t
 
 	# Moves file to destinaiton
 	# TODO: change this to mv
-	echo $(cp -vf $logfile $DESTINAITON) >> log.txt
+	echo $(mv -vf $logfile $DESTINAITON) >> log.txt
 done
