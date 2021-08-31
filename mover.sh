@@ -17,7 +17,7 @@ if [ "$#" -ne 2 ]; then
 	exit 1
 fi
 
-for logfile in $(find $FOLDER -maxdepth 1 -mtime $MAXDAYS -type f | grep -E '(.txt|.log)$'); do
+for logfile in $(find $FOLDER -maxdepth 1 -mtime +$MAXDAYS -type f | grep -E '(.txt|.log)$'); do
 	ls -asl $logfile
 
 	# Moves file to destinaiton
