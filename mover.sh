@@ -1,19 +1,14 @@
 #!/bin/bash
 
 # Sets the max age: default 21 days
-MAXDAYS=21
+MAXDAYS=$3
 
 FOLDER=$1
 DESTINAITON=$2
 
-if [[ -z "$MAXDAYS" ]]; then
-	echo "You must set the max days from the makefile..."
-	exit 1
-fi
-
-if [ "$#" -ne 2 ]; then 
+if [ "$#" -ne 3 ]; then 
 	echo "You must supply the required and valid inputs."
-	echo "Sample: ./mover.sh <source-folder> <destination-folder>"
+	echo "Sample: ./mover.sh <source-folder> <destination-folder> <number-of-max-days>"
 	exit 1
 fi
 
